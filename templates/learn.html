@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    lessons = {{lessons|tojson}}
+    lesson_id = {{lesson_id|tojson}}
+</script>
+
+<b>Learn page template for ASL Academy!</b>
+<div>
+    Lesson {{lesson_id}}!
+</div>
+
+{% endblock %}
+
