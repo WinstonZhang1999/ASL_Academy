@@ -44,13 +44,111 @@ lessons = [
             "text": "See You Later!",
             "video": "https://www.signingsavvy.com/media/mp4-ld/22/22743.mp4"},
         "video_2": {
-            "text": "Me Too!",
+            "text": "You too",
             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
         "video_3": {
             "text": "Good Night",
             "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
         "next_lesson":"end",
     }
+]
+
+#quiz question types: translation or conversation
+questions = [
+    {
+        "question_id": "1",
+        "question_type": "translation",
+        "instructions": "Type the signed phrase in English in the box below",
+        "video_1": {
+            "text": "How are you?",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
+        "video_2": "null",
+        "video_3": "null",
+        "video_4": "null"
+    },
+    {
+        "question_id": "2",
+        "question_type": "translation",
+        "instructions": "Type the signed phrase in English in the box below",
+        "video_1": {
+            "text": "Goodnight",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
+        "video_2": "null",
+        "video_3": "null",
+        "video_4": "null"
+    },
+    {
+        "question_id": "3",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "How are you?",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
+        "video_2": {
+            "text": "Bad",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
+        "video_3": {
+             "text": "Good morning",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/9/9148.mp4"},
+        "video_4": {
+             "text": "You too",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
+        "answer": "video_2"
+    },
+    {
+        "question_id": "4",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "Good night",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
+        "video_2": {
+            "text": "Good morning",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/9/9148.mp4"},
+        "video_3": {
+             "text": "Bad",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
+        "video_4": {
+             "text": "See you later",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/22/22743.mp4"},
+        "answer": "video_4"
+    },
+    {
+        "question_id": "5",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "Hello",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/24/24851.mp4"},
+        "video_2": {
+            "text": "Bad",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
+        "video_3": {
+             "text": "Nice to meet you!",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/29/29516.mp4"},
+        "video_4": {
+             "text": "You too",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
+        "answer": "video_3"
+    },
+    {
+        "question_id": "6",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "How are you?",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
+        "video_2": {
+            "text": "Nice to meet you",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/29/29516.mp4"},
+        "video_3": {
+             "text": "Good",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/21/21534.mp4"},
+        "video_4": {
+             "text": "You too",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
+        "answer": "video_3"
+    },
 ]
 
 # ROUTES
@@ -71,8 +169,16 @@ def learn(lessons=lessons, lesson_id = None):
 
 @app.route('/practice/<lesson_id>')
 def practice(lessons=lessons, lesson_id = None):
-    return render_template('practice.html', lessons=lessons, lesson_id = lesson_id) 
+    return render_template('practice.html', lessons=lessons, lesson_id = lesson_id)
 
+@app.route('/quiz/<question_id>')
+def quiz(questions=questions, question_id = None):
+    print(question_id)
+    question = questions[int(question_id)-1]
+    if (question["question_type"] == "translation"):
+        return render_template('quiz_translation.html', question=question, question_id=question_id)
+    else: #question type is conversation
+        return render_template('quiz_conversation.html', question=question, question_id=question_id)
 
 
 # AJAX FUNCTIONS
