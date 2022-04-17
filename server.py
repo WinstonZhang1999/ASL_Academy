@@ -8,8 +8,8 @@ app = Flask(__name__)
 user_id = -1
 user_data = {}
 
-lessons = {
-    "1":{
+lessons = [
+    {
         "lesson_id": "1",
         "title": "Introductions",
         "video_1": {
@@ -23,7 +23,7 @@ lessons = {
             "video": "https://www.signingsavvy.com/media/mp4-ld/9/9148.mp4"},
         "next_lesson":"2"
     },
-    "2":{
+    {
         "lesson_id": "2",
         "title": "Conversation",
         "video_1": {
@@ -37,7 +37,7 @@ lessons = {
             "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
         "next_lesson":"3"
     },
-    "3":{
+    {
         "lesson_id": "3",
         "title": "Goodbyes",
         "video_1": {
@@ -49,9 +49,9 @@ lessons = {
         "video_3": {
             "text": "Good Night",
             "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
-        "next_lesson":"end"
+        "next_lesson":"end",
     }
-}
+]
 
 # ROUTES
 
@@ -63,7 +63,11 @@ def home():
 
 @app.route('/learn/<lesson_id>')
 def learn(lessons=lessons, lesson_id = None):
-    return render_template('learn.html', lessons=lessons, lesson_id = lesson_id) 
+    lesson = lessons[0]
+    for l in lessons:
+        if (int(l["lesson_id"]) == int(lesson_id)):
+            lesson = l
+    return render_template('learn.html', lesson=lesson, lesson_id = lesson_id) 
 
 @app.route('/practice/<lesson_id>')
 def practice(lessons=lessons, lesson_id = None):

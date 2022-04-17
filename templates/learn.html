@@ -2,14 +2,45 @@
 
 {% block content %}
 
+<script type="text/javascript" src="{{ url_for('static', filename = 'learn.js') }}"></script>
 <script>
-    lessons = {{lessons|tojson}}
+    
+    lesson = {{lesson|tojson}}
     lesson_id = {{lesson_id|tojson}}
 </script>
 
 <b>Learn page template for ASL Academy!</b>
 <div>
     Lesson {{lesson_id}}!
+</div>
+<div class="row">
+    <div class="col-md-4">
+        {{lesson.video_1.text}}
+        <video width="320" height="240" autoplay loop>
+            <source src={{lesson.video_1.video}} type="video/mp4">
+            Your browser does not support the video tag.
+        </video> 
+
+    </div>
+    <div class="col-md-4">
+        {{lesson.video_2.text}}
+        <video width="320" height="240" autoplay loop>
+            <source src={{lesson.video_2.video}} type="video/mp4">
+            Your browser does not support the video tag.
+        </video> 
+    </div>
+    <div class="col-md-4">
+        {{lesson.video_3.text}}
+        <video width="320" height="240" autoplay loop>
+            <source src={{lesson.video_3.video}} type="video/mp4">
+            Your browser does not support the video tag.
+        </video> 
+    </div>
+</div>
+<div>
+    <button class="next_button">
+        Next Lesson
+    </button>
 </div>
 
 {% endblock %}
