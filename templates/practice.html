@@ -7,3 +7,55 @@
 
 {% endblock %}
 
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'quiz.js') }}"></script>
+<script>
+    question = {{question|tojson}};
+    question_id = {{question_id|tojson}};
+    console.log(question);
+</script>
+
+<h1>Quiz page template for ASL Academy!</h1>
+<div>
+    Question {{question_id}}/6!
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {{question.video_1.text}}
+        <video width="320" height="240" autoplay loop>
+            <source src={{question.video_1.video}} type="video/mp4">
+        </video>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        {{question.video_2.text}}
+        <video width="320" height="240" autoplay loop>
+            <source src={{question.video_2.video}} type="video/mp4">
+        </video>
+    </div>
+    <div class="col-md-4">
+        {{question.video_3.text}}
+        <video width="320" height="240" autoplay loop>
+            <source src={{question.video_3.video}} type="video/mp4">
+        </video>
+    </div>
+    <div class="col-md-4">
+        {{question.video_4.text}}
+        <video width="320" height="240" autoplay loop>
+            <source src={{question.video_4.video}} type="video/mp4">
+        </video>
+    </div>
+</div>
+<div>
+    <button class="next_button">
+        Next Lesson
+    </button>
+</div>
+
+{% endblock %}
+
