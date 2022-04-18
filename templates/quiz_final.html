@@ -6,25 +6,14 @@
 <script>
     question = {{question|tojson}};
     question_id = {{question_id|tojson}};
-    console.log(question);
+    console.log(score);
 </script>
 
 <h1>Quiz page template for ASL Academy!</h1>
 <div>
-    Question {{question_id}}/6!
+    Your score is: {{question_id}}
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <video width="320" height="240" autoplay loop>
-            <source src={{question.video_1.video}} type="video/mp4">
-        </video><br>
-        {{question.instructions}}<br>
-        <textarea></textarea>
-    </div>
-</div>
-<button class="next_button">
-    Next Question
-</button>
+
 
 {% endblock %}
 

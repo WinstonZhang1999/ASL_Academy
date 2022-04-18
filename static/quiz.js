@@ -6,7 +6,8 @@ $(document).ready(function(){
             "question_id": parseInt(question_id),
             "answer": ""
         };
-        var element = document. getElementById('choice'); 
+        
+        var element = document.getElementById('answer_conversation'); 
         if (typeof(element) != 'undefined' && element != null) { 
             // multiple choice. 
             var radios = document.getElementsByName('choice');
@@ -18,12 +19,13 @@ $(document).ready(function(){
                 }
             }
             response["answer"] = val;
+            console.log("here");
+
         }
         else{
             //frq
             response["answer"] = document.getElementById("answer").value;
         }
-        console.log("here");
         console.log(response['answer']);
         check_answer(response);
         if(question_id < LAST_QUESTION_ID){
@@ -32,7 +34,8 @@ $(document).ready(function(){
             window.location.href = newUrl;
         }
         else{
-            let newUrl = "/quiz/quiz_final"
+            let nextID = parseInt(question_id) + 1;
+            let newUrl = "/quiz/"+nextID;
             window.location.href = newUrl;
         }
 
@@ -40,16 +43,17 @@ $(document).ready(function(){
 })
 
 function check_answer(data_to_check){
-    console.log(data_to_check);
+    console.log("check_answer");
     let success = false;
     $.ajax({
-        type:"POST",
-        url:"check_answer",
-        dataType:"json",
+        type: "POST",
+        url: "check_answer",
+        dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data_to_check),
         success: function(result){
-            console.log("success")
+            let correct_ans = result["correct_ans"]
+            console.log("success"+correct_ans)
             console.log(result)
             success = true
         },

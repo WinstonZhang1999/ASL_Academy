@@ -175,14 +175,16 @@ def practice(lessons=lessons, lesson_id = None):
 
 @app.route('/quiz/<question_id>')
 def quiz(questions=questions, question_id = None):
-    print(question_id)
-    question = questions[int(question_id)-1]
+    global correct_ans
+    print("now on question: " + str(question_id))
     if int(question_id)-1 >= last_question_id:
         percentage = correct_ans/last_question_id * 100
         score = str(percentage) + "%"
         correct_ans = 0
-        return render_template('quiz_finish.html', score=score)
+        print(score)
+        return render_template('quiz_final.html', question=score, question_id=score)
     else:
+        question = questions[int(question_id)-1]
         if (question["question_type"] == "translation"):
             return render_template('quiz_translation.html', question=question, question_id=question_id)
         else: #question type is conversation
@@ -194,7 +196,11 @@ def quiz(questions=questions, question_id = None):
 # ajax for checking quiz responses
 @app.route('/check_answer', methods=['GET', 'POST'])
 def check_answer():
+    print("here")
+
     entry = request.get_json()
+
+    print("here")
     question_id = entry['question_id']
     answer = entry['answer']
     question = questions[int(question_id)-1]
@@ -206,7 +212,7 @@ def check_answer():
         if question["answer"] == answer:
             correct_ans += 1
     
-    return jsonify(correct_ans)
+    return jsonify(correct_ans = correct_ans)
 
 # ajax for adding a new user
 @app.route('/add_user', methods=['GET', 'POST'])
@@ -260,7 +266,8 @@ def add_practice_result():
 
 
 if __name__ == '__main__':
-   app.run(debug = True)
+    correct_ans = 0
+    app.run(debug = True)
 
 
 
