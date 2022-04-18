@@ -23,21 +23,29 @@
 </div>
 <div class="row">
     <div class="col-md-4">
+        A:
         <video width="320" height="240" autoplay loop>
             <source src={{question.video_2.video}} type="video/mp4">
         </video>
     </div>
     <div class="col-md-4">
+        B:
         <video width="320" height="240" autoplay loop>
             <source src={{question.video_3.video}} type="video/mp4">
         </video>
     </div>
     <div class="col-md-4">
+        C:
         <video width="320" height="240" autoplay loop>
             <source src={{question.video_4.video}} type="video/mp4">
         </video>
     </div>
 </div>
+<form id="answer">
+    <input type="radio" name="choice" value="video_2">
+    <input type="radio" name="choice" value="video_3">
+    <input type="radio" name="choice" value="video_4">
+</form>
 <div>
     <button class="next_button">
         Next Lesson

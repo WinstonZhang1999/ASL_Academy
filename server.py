@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 
 user_id = -1
+last_question_id = 6
+correct_ans = 0
 user_data = {}
 
 lessons = [
@@ -175,13 +177,36 @@ def practice(lessons=lessons, lesson_id = None):
 def quiz(questions=questions, question_id = None):
     print(question_id)
     question = questions[int(question_id)-1]
-    if (question["question_type"] == "translation"):
-        return render_template('quiz_translation.html', question=question, question_id=question_id)
-    else: #question type is conversation
-        return render_template('quiz_conversation.html', question=question, question_id=question_id)
+    if int(question_id)-1 >= last_question_id:
+        percentage = correct_ans/last_question_id * 100
+        score = str(percentage) + "%"
+        correct_ans = 0
+        return render_template('quiz_finish.html', score=score)
+    else:
+        if (question["question_type"] == "translation"):
+            return render_template('quiz_translation.html', question=question, question_id=question_id)
+        else: #question type is conversation
+            return render_template('quiz_conversation.html', question=question, question_id=question_id)
+
 
 
 # AJAX FUNCTIONS
+# ajax for checking quiz responses
+@app.route('/check_answer', methods=['GET', 'POST'])
+def check_answer():
+    entry = request.get_json()
+    question_id = entry['question_id']
+    answer = entry['answer']
+    question = questions[int(question_id)-1]
+    if question["question_type"] == "translation":
+        if question["video_1"]["text"] == answer:
+            # correct
+            correct_ans += 1
+    else:
+        if question["answer"] == answer:
+            correct_ans += 1
+    
+    return jsonify(correct_ans)
 
 # ajax for adding a new user
 @app.route('/add_user', methods=['GET', 'POST'])
