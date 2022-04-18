@@ -1,59 +1,38 @@
-{% extends "layout.html" %}
 
-{% block content %}
-
-<b>Practice page template for ASL Academy!
-</b>
-
-{% endblock %}
 
 {% extends "layout.html" %}
 
 {% block content %}
 
-<script type="text/javascript" src="{{ url_for('static', filename = 'quiz.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename = 'practice.js') }}"></script>
 <script>
-    question = {{question|tojson}};
-    question_id = {{question_id|tojson}};
-    console.log(question);
+    lesson = {{lesson|tojson}};
+    lesson_id = {{lesson_id|tojson}};
 </script>
 
 <h1>Quiz page template for ASL Academy!</h1>
 <div>
-    Question {{question_id}}/6!
+    Practice for lesson {{lesson_id}}
 </div>
 <div class="row">
     <div class="col-md-12">
-        {{question.video_1.text}}
         <video width="320" height="240" autoplay loop>
-            <source src={{question.video_1.video}} type="video/mp4">
+            <source src={{lesson.video_3.video}} type="video/mp4">
         </video>
 
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4">
-        {{question.video_2.text}}
-        <video width="320" height="240" autoplay loop>
-            <source src={{question.video_2.video}} type="video/mp4">
-        </video>
-    </div>
-    <div class="col-md-4">
-        {{question.video_3.text}}
-        <video width="320" height="240" autoplay loop>
-            <source src={{question.video_3.video}} type="video/mp4">
-        </video>
-    </div>
-    <div class="col-md-4">
-        {{question.video_4.text}}
-        <video width="320" height="240" autoplay loop>
-            <source src={{question.video_4.video}} type="video/mp4">
-        </video>
-    </div>
+    Please type your answer below:
+    
 </div>
+<div class="row">
+    <textarea></textarea>
+</div>
+
 <div>
-    <button class="next_button">
-        Next Lesson
+    <button class="">
+        Next
     </button>
 </div>
 
