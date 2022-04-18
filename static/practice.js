@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $("button").click(function(){
-        
-            let newUrl = "/practice/"+lesson["lesson_id"]
+        if(lesson["next_lesson"]!= "end"){
+            let newUrl = "/learn/"+lesson["next_lesson"]
             window.location.href = newUrl
-        
+        }
         
     })
 })

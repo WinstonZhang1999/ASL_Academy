@@ -171,7 +171,11 @@ def learn(lessons=lessons, lesson_id = None):
 
 @app.route('/practice/<lesson_id>')
 def practice(lessons=lessons, lesson_id = None):
-    return render_template('practice.html', lessons=lessons, lesson_id = lesson_id)
+    lesson = lessons[0]
+    for l in lessons:
+        if (int(l["lesson_id"]) == int(lesson_id)):
+            lesson = l
+    return render_template('practice.html', lesson=lesson, lesson_id = lesson_id)
 
 @app.route('/quiz/<question_id>')
 def quiz(questions=questions, question_id = None):
