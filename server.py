@@ -198,8 +198,9 @@ def quiz(questions=questions, question_id = None):
 
 # AJAX FUNCTIONS
 # ajax for checking quiz responses
-@app.route('/check_answer', methods=['GET', 'POST'])
+@app.route('/quiz/check_answer', methods=['GET', 'POST'])
 def check_answer():
+    global correct_ans
     print("here")
 
     entry = request.get_json()
@@ -215,7 +216,7 @@ def check_answer():
     else:
         if question["answer"] == answer:
             correct_ans += 1
-    
+    print('current score is:'+str(correct_ans))
     return jsonify(correct_ans = correct_ans)
 
 # ajax for adding a new user

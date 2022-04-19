@@ -47,7 +47,7 @@ function check_answer(data_to_check){
     let success = false;
     $.ajax({
         type: "POST",
-        url: "check_answer",
+        url: "/quiz/check_answer",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data_to_check),
