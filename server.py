@@ -228,8 +228,9 @@ def add_user():
     user_id += 1
     # the data sent should be a dictionary with 'time' as  a field.
     json_data = request.get_json()   
-    time = json_data["time"] 
+    time = json_data["user_start_time"] 
     id = user_id
+    print("user start time recorded at: ", time)
     
     # create a new entry to dictionary with time and id.
     # practice_results and quiz_results firled to be filled later.
@@ -260,7 +261,7 @@ def add_practice_result():
     
     # assign the new True/False value to the proper index (practice question #) in the
     # array of results in the dictionary
-    user_data[str(user_id)]["practice_results"][int(practice_number)] = result
+    user_data[str(user_id)]["practice_results"][int(practice_number)-1] = result
 
     #send back the new entry
     return jsonify(user_data[str(user_id)])

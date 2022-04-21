@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+
 
 <b>Hello!
     This will be the home page for ASL Academy!
 </b>
 <div class="row">
     <div class="col-md-6">
-        <a class="button" href="/learn/1">Click here to start learning!</a>
+        <button id = "learn" class = "button"> Click here to start learning!</button>
     </div>
     <div class="col-md-6">
         <a class="button" href="/quiz/1">Click here to start the quiz!</a>

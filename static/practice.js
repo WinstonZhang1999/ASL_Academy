@@ -1,3 +1,13 @@
+function give_feedback(right_answer ,feedback){
+    if( feedback == true){
+        val = "<p>&#10004; Correct!"
+    }
+    else{
+        val = "<p>&#10060 The right answer is " + right_answer;
+    }
+    $("#feedback").append(val)
+}
+
 $(document).ready(function(){
     $(".next").click(function(){
         if(lesson["next_lesson"]!= "end"){
@@ -11,13 +21,22 @@ $(document).ready(function(){
         
     })
     $(".check").click(function(){
-        console.log("check")
+        right_answer = lesson["video_3"]["text"].toLowerCase();
+        user_answer = $("textarea").val().toLowerCase();
+        if (user_answer == right_answer){
+            give_feedback(right_answer,true);
+            res = true
+        }
+        else{
+            give_feedback(right_answer,false);
+            res = false
+        }
         let response = {
             "practice_number": parseInt(lesson_id),
-            "answer": $("textarea").val()
+            "result": res
         };
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/add_practice_result",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
