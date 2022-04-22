@@ -15,7 +15,7 @@ $(document).ready(function(){
             window.location.href = newUrl
         }
         else{
-            let newUrl = "/quiz/1"
+            let newUrl = "/learn/finish"
             window.location.href = newUrl
         }
         

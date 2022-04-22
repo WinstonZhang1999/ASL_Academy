@@ -14,43 +14,67 @@ lessons = [
     {
         "lesson_id": "1",
         "title": "Introductions",
-        "video_1": {
+        "videos":[
+            {
+            "video_id": 1,
             "text": "Hello",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/24/24851.mp4"},
-        "video_2": {
-            "text": "Nice to Meet You",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/29/29516.mp4"},
-        "video_3": {
-            "text": "Good Morning",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/9/9148.mp4"},
+            "video": "https://www.signingsavvy.com/media/mp4-ld/24/24851.mp4"
+            },
+            {
+                "video_id": 2,
+                "text": "Nice to Meet You",
+                "video": "https://www.signingsavvy.com/media/mp4-ld/29/29516.mp4"
+            },
+            {
+                "video_id": 3,
+                "text": "Good Morning",
+                "video": "https://www.signingsavvy.com/media/mp4-ld/9/9148.mp4"
+            },
+        ],
         "next_lesson":"2"
     },
     {
         "lesson_id": "2",
         "title": "Conversation",
-        "video_1": {
+        "videos":[
+            {
+            "video_id": 1,
             "text": "How Are You?",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
-        "video_2": {
-            "text": "Good",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/21/21534.mp4"},
-        "video_3": {
-            "text": "Bad",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"
+            },
+            {
+                "video_id": 2,
+                "text": "Good",
+                "video": "https://www.signingsavvy.com/media/mp4-ld/21/21534.mp4"
+            },
+            {
+                "video_id": 3,
+                "text": "Bad",
+                "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"
+            },
+        ],
         "next_lesson":"3"
     },
     {
         "lesson_id": "3",
         "title": "Goodbyes",
-        "video_1": {
+        "videos":[
+            {
+            "video_id": 1,
             "text": "See You Later!",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22743.mp4"},
-        "video_2": {
-            "text": "You too",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
-        "video_3": {
-            "text": "Good Night",
-            "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22743.mp4"
+            },
+            {
+                "video_id": 2,
+                "text": "You too",
+                "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"
+            },
+            {
+                "video_id": 3,
+                "text": "Good Night",
+                "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"
+            },
+        ],
         "next_lesson":"end",
     }
 ]
@@ -168,6 +192,10 @@ def learn(lessons=lessons, lesson_id = None):
         if (int(l["lesson_id"]) == int(lesson_id)):
             lesson = l
     return render_template('learn.html', lesson=lesson, lesson_id = lesson_id) 
+
+@app.route('/learn/finish')
+def finish_learn():
+    return render_template('learn_final.html')
 
 @app.route('/practice/<lesson_id>')
 def practice(lessons=lessons, lesson_id = None):

@@ -13,33 +13,46 @@
 <div>
     Lesson {{lesson_id}}!
 </div>
+<!--
 <div class="row">
     <div class="col-md-4">
-        {{lesson.video_1.text}}
+        {{lesson.videos.1.text}}
         <video width="320" height="240" autoplay loop>
-            <source src={{lesson.video_1.video}} type="video/mp4">
+            <source src={{lesson.videos.1.video}} type="video/mp4">
             Your browser does not support the video tag.
-        </video> 
-
+        </video>
     </div>
     <div class="col-md-4">
-        {{lesson.video_2.text}}
+        {{lesson.videos.1.text}}
         <video width="320" height="240" autoplay loop>
-            <source src={{lesson.video_2.video}} type="video/mp4">
+            <source src={{lesson.videos.1.video}} type="video/mp4">
             Your browser does not support the video tag.
         </video> 
     </div>
     <div class="col-md-4">
-        {{lesson.video_3.text}}
+        {{lesson.videos.1.text}}
         <video width="320" height="240" autoplay loop>
-            <source src={{lesson.video_3.video}} type="video/mp4">
+            <source src={{lesson.videos.1.video}} type="video/mp4">
             Your browser does not support the video tag.
         </video> 
     </div>
 </div>
+-->
+
+<div class="row" id = "lesson-video">
+
+</div>
+<div class="row">
+    <button id = "last-video" class="next_button">
+        Last Video
+    </button>
+    <button id = "next-video"class="next_button">
+        Next Video
+    </button>
+</div>
 <div>
-    <button class="next_button">
-        Next Lesson
+    <button id="next-lesson" class="next_button">
+        Start practicing
     </button>
 </div>
 
