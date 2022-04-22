@@ -12,11 +12,7 @@
 
 <h1>Practice for lesson {{lesson_id}}</h1>
 <div class="row">
-    <div class="col-md-12">
-        <video width="320" height="240" autoplay loop>
-            <source src={{lesson.video_3.video}} type="video/mp4">
-        </video>
-
+    <div class="col-md-12" id = "practice-video">
     </div>
 </div>
 <div class="row">
@@ -35,9 +31,12 @@
     </div>
 </div>
 
-<div>
+<div class="row">
     <button class="next">
         Next
+    </button>
+    <button class="again">
+        Practice Again
     </button>
 </div>
 

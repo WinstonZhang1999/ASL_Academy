@@ -7,8 +7,31 @@ function give_feedback(right_answer ,feedback){
     }
     $("#feedback").append(val)
 }
+function renderVideo(videoNumber){
+    $("#practice-video").empty()
+    console.log(videoNumber)
+    let content = ""
+    let source = ""
+    let videos = lesson["videos"]
+    console.log(videos)
+    $.each(videos, function(i, video){
+        if(i+1 == videoNumber){
+            content = video["text"]
+            source = video["video"]
+        }
+    })
+    let video = $("<video width='320' height='240' autoplay loop>");
+    $(video).attr('src', source);
+    $("#practice-video").append(video);
+}
 
 $(document).ready(function(){
+    let videoNumber = Math.floor((Math.random() * 3) + 1);
+    renderVideo(videoNumber)
+    $(".again").click(function(){
+        videoNumber = Math.floor((Math.random() * 3) + 1);
+        renderVideo(videoNumber)
+    })
     $(".next").click(function(){
         if(lesson["next_lesson"]!= "end"){
             let newUrl = "/learn/"+lesson["next_lesson"]
@@ -21,7 +44,12 @@ $(document).ready(function(){
         
     })
     $(".check").click(function(){
-        right_answer = lesson["video_3"]["text"].toLowerCase();
+        $.each(videos, function(i, video){
+            if(i+1 == videoNumber){
+                content = video["text"]
+            }
+        })
+        right_answer = content.toLowerCase();
         user_answer = $("textarea").val().toLowerCase();
         if (user_answer == right_answer){
             give_feedback(right_answer,true);
