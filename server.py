@@ -208,7 +208,6 @@ def practice(lessons=lessons, lesson_id = None):
 @app.route('/quiz/<question_id>')
 def quiz(questions=questions, question_id = None):
     global correct_ans
-    print("now on question: " + str(question_id))
     if int(question_id)-1 >= last_question_id:
         percentage = correct_ans/last_question_id * 100
         score = str(percentage) + "%"
@@ -289,6 +288,7 @@ def add_practice_result():
     
     # assign the new True/False value to the proper index (practice question #) in the
     # array of results in the dictionary
+    print("HERE:",str(user_id))
     user_data[str(user_id)]["practice_results"][int(practice_number)-1] = result
 
     #send back the new entry

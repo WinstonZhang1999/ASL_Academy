@@ -1,4 +1,46 @@
+function isEmpty(val){
+    if (val == ''){
+        return true;
+    }
+    else if($.trim(val) == ''){
+        return true;
+    }
+    return false;
+}
+
+function checkAnswer(right_answer,user_answer){
+    if (user_answer == right_answer){
+        give_feedback(right_answer,true);
+        res = true
+    }
+    else{
+        give_feedback(right_answer,false);
+        res = false
+    }
+    let response = {
+        "practice_number": parseInt(lesson_id),
+        "result": res
+    };
+    $.ajax({
+        type: "POST",
+        url: "/add_practice_result",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(response),
+        success: function(result){
+            console.log("success")
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
 function give_feedback(right_answer ,feedback){
+    $("#feedback").empty()
     if( feedback == true){
         val = "<p>&#10004; Correct!"
     }
@@ -20,7 +62,7 @@ function renderVideo(videoNumber){
             source = video["video"]
         }
     })
-    let video = $("<video width='320' height='240' autoplay loop>");
+    let video = $("<video width='640' height='480' autoplay loop>");
     $(video).attr('src', source);
     $("#practice-video").append(video);
 }
@@ -32,6 +74,11 @@ $(document).ready(function(){
         videoNumber = Math.floor((Math.random() * 3) + 1);
         renderVideo(videoNumber)
     })
+    $("#back").click(function(){
+        let newUrl = "/learn/"+lesson["lesson_id"]
+            window.location.href = newUrl
+    })
+
     $(".next").click(function(){
         if(lesson["next_lesson"]!= "end"){
             let newUrl = "/learn/"+lesson["next_lesson"]
@@ -44,41 +91,24 @@ $(document).ready(function(){
         
     })
     $(".check").click(function(){
-        $.each(videos, function(i, video){
-            if(i+1 == videoNumber){
-                content = video["text"]
-            }
-        })
-        right_answer = content.toLowerCase();
-        user_answer = $("textarea").val().toLowerCase();
-        if (user_answer == right_answer){
-            give_feedback(right_answer,true);
-            res = true
+
+        user_answer = $("#answer").val().toLowerCase();
+        if(isEmpty(user_answer)){
+            $("#feedback").empty()
+            $("#feedback").append("<div class = 'warn'>Please input an answer before submitting")
         }
         else{
-            give_feedback(right_answer,false);
-            res = false
+            let videos = lesson["videos"]
+            $.each(videos, function(i, video){
+                if(i+1 == videoNumber){
+                    content = video["text"]
+                }
+            })
+            right_answer = content.toLowerCase();
+            $("#answer").val('');
+            user_answer = $.trim(user_answer)
+            checkAnswer(right_answer,user_answer);
         }
-        let response = {
-            "practice_number": parseInt(lesson_id),
-            "result": res
-        };
-        $.ajax({
-            type: "POST",
-            url: "/add_practice_result",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(response),
-            success: function(result){
-                console.log("success")
-            },
-            error: function(request, status, error){
-                console.log("Error")
-                console.log(request)
-                console.log(status)
-                console.log(error)
-            }
-        });
-        
+       
     })
 })

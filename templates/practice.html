@@ -10,35 +10,58 @@
     lesson_id = {{lesson_id|tojson}};
 </script>
 
-<h1>Practice for lesson {{lesson_id}}</h1>
 <div class="row">
-    <div class="col-md-12" id = "practice-video">
+    <div class = 'col-md-3'></div>
+    <div class = 'col-md-6'>
+        <h1>Practice for lesson {{lesson_id}}</h1>
     </div>
-</div>
-<div class="row">
-    Please type your answer below:
-    
-</div>
-<div class="row">
-    <textarea></textarea>
-</div>
-<div class="row">
-    <button class = "check">
-        submit
-    </button>
-    <div id = "feedback">
-        
-    </div>
+    <div class = 'col-md-3'></div>
 </div>
 
 <div class="row">
-    <button class="next">
-        Next
-    </button>
-    <button class="again">
-        Practice Again
-    </button>
+    <div class = 'col-md-3'></div>
+    <div id = "practice-video" class = 'col-md-6'></div>
+    <div class = 'col-md-3'></div>
 </div>
+
+<div class="row">
+    <div class = 'col-md-3'>
+        <button id = "back" class="button">
+            Back to Lesson {{lesson_id}} 
+        </button>
+    </div>
+    <div class = 'col-md-6'>  
+
+        <div class="row">
+            Please type your answer below:
+        </div>
+        <div class="row">
+            <textarea id = "answer"></textarea>
+        </div>
+        <div class="row">
+            <button class = "check">
+                submit
+            </button>
+            <div id = "feedback">
+                
+            </div>
+            <br>
+        </div>
+        <br>
+        <div class="row">
+            <button class="again">
+                Practice More
+            </button>
+        </div>
+
+    </div>
+    <div class = 'col-md-3'>
+        <button class="next">
+            Next
+        </button>
+    </div>
+</div>
+
 
 {% endblock %}
 
