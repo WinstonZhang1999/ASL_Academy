@@ -11,11 +11,11 @@ function isEmpty(val){
 function checkAnswer(right_answer,user_answer){
     if (user_answer == right_answer){
         give_feedback(right_answer,true);
-        let res = true
+        res = true
     }
     else{
         give_feedback(right_answer,false);
-        let res = false
+        res = false
     }
     let response = {
         "practice_number": parseInt(lesson_id),
