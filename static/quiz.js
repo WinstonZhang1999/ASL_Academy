@@ -3,7 +3,7 @@ const LAST_QUESTION_ID = 6;
 $(document).ready(function(){
     $("button").click(function(){
         let response = {
-            "question_id": parseInt(question_id),
+            "question_id": parseInt(question['question_id']),
             "answer": ""
         };
         

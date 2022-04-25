@@ -2,12 +2,14 @@ from unittest import result
 from flask import Flask
 from flask import render_template
 from flask import Response, request, jsonify
+import random
 app = Flask(__name__)
 
 
 user_id = -1
 last_question_id = 6
 correct_ans = 0
+alr_visited_questions = []
 user_data = {}
 
 lessons = [
@@ -175,6 +177,101 @@ questions = [
              "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
         "answer": "video_3"
     },
+    ### QUESTIONS 7-12 ARE PLACE HOLDERS, PLEASE FIND NEW QUESTIONS ###
+    {
+        "question_id": "7",
+        "question_type": "translation",
+        "instructions": "Type the signed phrase in English in the box below",
+        "video_1": {
+            "text": "How are you?",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
+        "video_2": "null",
+        "video_3": "null",
+        "video_4": "null"
+    },
+    {
+        "question_id": "8",
+        "question_type": "translation",
+        "instructions": "Type the signed phrase in English in the box below",
+        "video_1": {
+            "text": "Goodnight",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
+        "video_2": "null",
+        "video_3": "null",
+        "video_4": "null"
+    },
+    {
+        "question_id": "9",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "How are you?",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
+        "video_2": {
+            "text": "Bad",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
+        "video_3": {
+             "text": "Good morning",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/9/9148.mp4"},
+        "video_4": {
+             "text": "You too",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
+        "answer": "video_2"
+    },
+    {
+        "question_id": "10",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "Good night",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
+        "video_2": {
+            "text": "Good morning",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/9/9148.mp4"},
+        "video_3": {
+             "text": "Bad",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
+        "video_4": {
+             "text": "See you later",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/22/22743.mp4"},
+        "answer": "video_4"
+    },
+    {
+        "question_id": "11",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "Hello",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/24/24851.mp4"},
+        "video_2": {
+            "text": "Bad",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/21/21535.mp4"},
+        "video_3": {
+             "text": "Nice to meet you!",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/29/29516.mp4"},
+        "video_4": {
+             "text": "You too",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
+        "answer": "video_3"
+    },
+    {
+        "question_id": "12",
+        "question_type": "conversation",
+        "instructions": "Which of the following would be an appropriate response to this sign?",
+        "video_1": {
+            "text": "How are you?",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
+        "video_2": {
+            "text": "Nice to meet you",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/29/29516.mp4"},
+        "video_3": {
+             "text": "Good",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/21/21534.mp4"},
+        "video_4": {
+             "text": "You too",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
+        "answer": "video_3"
+    },
 ]
 
 # ROUTES
@@ -208,14 +305,26 @@ def practice(lessons=lessons, lesson_id = None):
 @app.route('/quiz/<question_id>')
 def quiz(questions=questions, question_id = None):
     global correct_ans
+    global alr_visited_questions 
+
     if int(question_id)-1 >= last_question_id:
         percentage = correct_ans/last_question_id * 100
-        score = str(percentage) + "%"
+        score = str(round(percentage)) + "%"
         correct_ans = 0
         print(score)
+        alr_visited_questions = []
         return render_template('quiz_final.html', question=score, question_id=score)
     else:
-        question = questions[int(question_id)-1]
+        if int(question_id) == 1:
+            alr_visited_questions = []
+        
+        rand_question = random.randint(1, len(questions))
+        while rand_question in alr_visited_questions:
+            rand_question = random.randint(1, len(questions))
+        
+        alr_visited_questions.append(rand_question)
+
+        question = questions[int(rand_question)-1]
         if (question["question_type"] == "translation"):
             return render_template('quiz_translation.html', question=question, question_id=question_id)
         else: #question type is conversation
@@ -301,6 +410,7 @@ def add_practice_result():
 
 if __name__ == '__main__':
     correct_ans = 0
+    alr_visited_questions = []
     app.run(debug = True)
 
 
