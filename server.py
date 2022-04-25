@@ -99,7 +99,7 @@ questions = [
         "question_type": "translation",
         "instructions": "Type the signed phrase in English in the box below",
         "video_1": {
-            "text": "Goodnight",
+            "text": "Good night",
             "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
         "video_2": "null",
         "video_3": "null",
