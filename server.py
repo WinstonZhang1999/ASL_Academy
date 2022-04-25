@@ -326,9 +326,9 @@ def quiz(questions=questions, question_id = None):
 
         question = questions[int(rand_question)-1]
         if (question["question_type"] == "translation"):
-            return render_template('quiz_translation.html', question=question, question_id=question_id)
+            return render_template('quiz_translation.html', question=question, question_id=question_id, score=str(correct_ans)+'/6')
         else: #question type is conversation
-            return render_template('quiz_conversation.html', question=question, question_id=question_id)
+            return render_template('quiz_conversation.html', question=question, question_id=question_id, score=str(correct_ans)+'/6')
 
 
 
