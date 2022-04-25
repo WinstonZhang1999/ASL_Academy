@@ -6,6 +6,7 @@
 <script>
     question = {{question|tojson}};
     question_id = {{question_id|tojson}};
+    question_type = {{question_type|tojson}};
     score = {{score|tojson}};
     console.log(question);
 </script>
@@ -13,7 +14,8 @@
 <h1>Quiz page template for ASL Academy!</h1>
 <div>
     Question {{question_id}}/6!
-    <br>
+</div>
+<div id="score">
     Score: {{score}}
 </div>
 <div class="row">
@@ -25,9 +27,9 @@
         <textarea id="answer"></textarea>
     </div>
 </div>
-<button class="next_button">
-    Next Question
-</button>
-
+<div id="feedback"></div>
+<div id="buttons">
+    <button id="submit">Submit</button>
+</div>
 {% endblock %}
 
