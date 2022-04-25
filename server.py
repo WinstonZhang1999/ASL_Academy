@@ -167,15 +167,15 @@ questions = [
             "text": "How are you?",
             "video": "https://www.signingsavvy.com/media/mp4-ld/22/22100.mp4"},
         "video_2": {
-            "text": "",
-            "video": ""},
+            "text": "Good",
+            "video": "https://www.signingsavvy.com/media/mp4-ld/21/21534.mp4"},
         "video_3": {
-             "text": "",
-             "video": ""},
+             "text": "See you later!",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/22/22743.mp4"},
         "video_4": {
-             "text": "",
-             "video": ""},
-        "answer": "video_3"
+             "text": "You too",
+             "video": "https://www.signingsavvy.com/media/mp4-ld/8/8896.mp4"},
+        "answer": "video_2"
     },
     {
         "question_id": "7",
@@ -215,7 +215,7 @@ questions = [
         "video_4": {
              "text": "Good night",
              "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
-        "answer": "video_2"
+        "answer": "video_3"
     },
     {
         "question_id": "10",
@@ -251,7 +251,7 @@ questions = [
         "video_4": {
              "text": "Good",
              "video": "https://www.signingsavvy.com/media/mp4-ld/21/21534.mp4"},
-        "answer": "video_3"
+        "answer": "video_2"
     },
     {
         "question_id": "12",
@@ -269,7 +269,7 @@ questions = [
         "video_4": {
              "text": "Good night",
              "video": "https://www.signingsavvy.com/media/mp4-ld/7/7038.mp4"},
-        "answer": "video_3"
+        "answer": "video_4"
     },
 ]
 
@@ -345,7 +345,9 @@ def check_answer():
     answer = entry['answer']
     question = questions[int(question_id)-1]
     if question["question_type"] == "translation":
-        if question["video_1"]["text"] == answer:
+        print("true answer:" + question["video_1"]["text"].lower().strip() + ":")
+        print("user answer:" + answer.lower().strip() + ":")
+        if question["video_1"]["text"].lower().strip() == answer.lower().strip():
             # correct
             correct_ans += 1
     else:

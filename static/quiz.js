@@ -1,4 +1,4 @@
-const LAST_QUESTION_ID = 6;
+const LAST_QUESTION_ID = 12;
 
 $(document).ready(function(){
     $("button").click(function(){
@@ -7,12 +7,12 @@ $(document).ready(function(){
             "answer": ""
         };
         
-        var element = document.getElementById('answer_conversation'); 
+        let element = document.getElementById('answer_conversation');
         if (typeof(element) != 'undefined' && element != null) { 
             // multiple choice. 
-            var radios = document.getElementsByName('choice');
-            var val= "";
-            for (var i = 0, length = radios.length; i < length; i++) {
+            let radios = document.getElementsByName('choice');
+            let val= "";
+            for (let i = 0, length = radios.length; i < length; i++) {
                 if (radios[i].checked) {
                     val = radios[i].value; 
                     break;
@@ -44,7 +44,6 @@ $(document).ready(function(){
 
 function check_answer(data_to_check){
     console.log("check_answer");
-    let success = false;
     $.ajax({
         type: "POST",
         url: "/quiz/check_answer",
@@ -53,9 +52,8 @@ function check_answer(data_to_check){
         data: JSON.stringify(data_to_check),
         success: function(result){
             let correct_ans = result["correct_ans"]
-            console.log("success"+correct_ans)
+            console.log("success "+correct_ans)
             console.log(result)
-            success = true
         },
         error: function(request, status, error){
             console.log("Error")
