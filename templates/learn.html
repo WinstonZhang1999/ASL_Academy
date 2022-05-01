@@ -9,8 +9,8 @@
     lesson_id = {{lesson_id|tojson}}
 </script>
 
-<b>Learn page template for ASL Academy!</b>
-<div>
+
+<div class = "lesson-number">
     Lesson {{lesson_id}}!
 </div>
 <!--
@@ -51,17 +51,19 @@
 </div>
 <div class="row">
     <div class = 'col-md-3'>
-        <button id = "last-video" class="next_button">
+        <button id = "last-video" class="next_button btn">
             Last Video
         </button>
     </div>   
     <div class = 'col-md-6'></div> 
     <div class = 'col-md-3'>
-        <button id = "next-video"class="next_button">
-            Next Video
-        </button>
-        <div>
-            <button id="practice" class="next_button">
+        <div class="row">
+            <button id = "next-video" class="next_button btn">
+                Next Video
+            </button>
+        </div>
+        <div class="row">
+            <button id="practice" class="next_button btn">
                 Start Practice
             </button>
         </div>

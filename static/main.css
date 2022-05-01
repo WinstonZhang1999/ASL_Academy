@@ -12,6 +12,9 @@
     color: red;
     text-align: center;
 }
+#lesson-title{
+    color: navy;
+}
 
 #linkToQuiz {
     font-size: 25px;
@@ -28,4 +31,18 @@
 
 .warn{
     color: red;
+}
+
+.next_button{
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: rgb(67, 67, 169);
+    color: white;
+
+}
+#navbar-title{
+    color: rgb(67, 67, 169);
+}
+#lesson-title{
+    color: rgb(67, 67, 169);
 }
