@@ -4,17 +4,21 @@
 <script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
 
 
-<div class = 'title'>American Sign Language Academy</div>
+<div class = 'title'>ASL Academy</div>
 <div class="row">
     <div class="col-md-6">
         <div class = 'card stat'>
             <img class="card-img-top" src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/American_Sign_Language_ASL.svg/1200px-American_Sign_Language_ASL.svg.png' alt='ASL logo'>
             <div class="card-body" alt="LearningCard"></div>
-            <button id = "learn" class = " btn button learn"> Start Learning!</button>
+            <a id = "learn" href="/learn/1" class="btn card1" style="position: static" >Start Learning</a>
         </div>
     </div>
     <div class="col-md-6">
-        <button id = "quiz" class = "button"> Test Yourself</button>
+        <div class = 'card stat'>
+            <img class="card-img-top" src='https://img.freepik.com/free-vector/quiz-neon-sign_1262-19629.jpg?w=2000' alt='ASL logo'>
+            <div class="card-body" alt="quizCard"></div>
+            <a id = "quiz" href="/quiz/1" class="btn card1" style="position: static" >Quiz Yourself</a>
+        </div>
     </div>
 </div>
 
