@@ -1,3 +1,6 @@
+.soft{
+    background-color: aliceblue;
+}
 #buttons {
     text-align: center;
 }
@@ -53,8 +56,9 @@
 }
 
 .title{
-    font-size: 100px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 140px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(81, 81, 81);
     margin-top: 80px;
     margin-bottom: 40px;
     margin-left: 200px;
@@ -65,15 +69,22 @@
 }
 
 .card{
+    background-color: rgb(241, 243, 245);
     border-radius: 10%;
     border-top: 10%;
-    height: 400px;
+    height:fit-content;
     size: 70%;
 }
 
 .card-img-top{
     width: 100%;
     border-radius: 15%;
+}
+
+.asl{
+    width:90%;
+    margin-left: 40px;
+    background-color: be;
 }
 .card-text{
     color: rgb(90, 90, 90);
@@ -125,6 +136,7 @@ h2 {
     color: white;
     border-radius: 20%;
     font-size: 50px;
+    margin-top: 10px;
 }
 
 .card1:hover {
