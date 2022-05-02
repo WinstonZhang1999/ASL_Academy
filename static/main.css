@@ -41,18 +41,18 @@
 .next_button{
     margin-top: 10px;
     margin-right: 10px;
-    background-color: rgb(67, 67, 169);
+    background-color: navy;
     color: white;
 
 }
 #navbar-title{
-    color: rgb(67, 67, 169);
+    color: navy;
 }
 
 button {
     margin-top: 10px;
     margin-right: 10px;
-    background-color: rgb(67, 67, 169);
+    background-color: navy;
     color: white;
     border-radius: 0.25rem;
     border: 1px solid transparent;
@@ -67,5 +67,11 @@ button:hover {
 
 h1 {
     color: navy;
+    text-align: center;
+}
+
+h2 {
+    color: rgba(222, 94, 24, 0.9);
+    font-size: xx-large;
     text-align: center;
 }
