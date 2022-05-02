@@ -12,7 +12,7 @@
 }
 
 #feedback {
-    color: rgba(222, 94, 24, 0.9);
+    color: navy;
     text-align: center;
 }
 #lesson-title{
@@ -38,7 +38,7 @@
 }
 
 .warn{
-    color: rgba(222, 94, 24, 0.9);
+    color: navy;
 }
 
 .next_button{
@@ -52,7 +52,7 @@
     color: navy;
 }
 #lesson-title{
-    color: rgb(67, 67, 169);
+    color: navy;
 }
 
 .title{
@@ -74,7 +74,7 @@
 }
 
 .learn{
-    background-color: rgb(67, 67, 169);
+    color: navy;
 }
 
 .card{
@@ -101,6 +101,10 @@
 
 .card-title{
     color: rgb(90, 90, 90);
+    text-align: center;
+}
+
+.col-md-12 {
     text-align: center;
 }
 
@@ -131,7 +135,7 @@ h1 {
 }
 
 h2 {
-    color: rgba(222, 94, 24, 0.9);
+    color: navy;
     font-size: xx-large;
     text-align: center;
 }

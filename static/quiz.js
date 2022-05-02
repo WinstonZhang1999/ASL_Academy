@@ -31,7 +31,6 @@ $(document).ready(function(){
         }
 
         check_answer(response);
-        //TODO: add feedback
         $('#buttons').append('<button id="next" onclick="goToNextQuestion()">Next Question</button>');
         $('#submit').remove();
     });
@@ -85,24 +84,44 @@ function quiz_feedback(result) {
 
         //If conversation question
         if (result["question_type"].localeCompare("conversation") == 0) {
-            //Get correct multiple choice answer
-            let user_radio_input = question[result["user_answer"]]["text"];
 
+            let correct_answer = "";
             let correct_radio_input = "";
-            if (result["true_answer"].localeCompare("video_2") == 0) {
-                correct_radio_input = "\"" + question["video_2"]["text"] + "\"";
-            } else if (result["true_answer"].localeCompare("video_3") == 0) {
-                correct_radio_input = "\"" + question["video_3"]["text"] + "\"";
-            } else {
-                correct_radio_input = "\"" + question["video_4"]["text"] + "\"";
+            let user_answer = question[result["user_answer"]]["text"];
+            let user_radio_input = "";
+
+            //Get user radio input
+            switch(result["user_answer"]) {
+                case "video_2":
+                    user_radio_input = "A";
+                    break;
+                case "video_3":
+                    user_radio_input = "B";
+                    break;
+                case "video_4":
+                    user_radio_input = "C";
             }
-            $('#feedback').text("Incorrect! The correct answer is " + correct_radio_input + ". You said \""
-            + user_radio_input + "\"");
+
+            //Get correct multiple choice answer
+            if (result["true_answer"].localeCompare("video_2") == 0) {
+                correct_radio_input = "A";
+                correct_answer = "\"" + question["video_2"]["text"] + "\"";
+
+            } else if (result["true_answer"].localeCompare("video_3") == 0) {
+                correct_radio_input = "B";
+                correct_answer = "\"" + question["video_3"]["text"] + "\"";
+
+            } else {
+                correct_radio_input = "C";
+                correct_answer = "\"" + question["video_4"]["text"] + "\"";
+            }
+            $('#feedback').text("Incorrect! The correct answer is (" + correct_radio_input + ") " + correct_answer +
+                ". You said (" + user_radio_input + ") \"" + user_answer + "\"");
 
         //If translation question
         } else {
-            $('#feedback').text("Incorrect! The correct answer is \"" + result["true_answer"] + "\". You said \""
-            + result["user_answer"] + "\"");
+            $('#feedback').text('The correct answer is \"' + result['true_answer'] + '\".You said \"'
+            + result['user_answer'] + '\"');
         }
     }
     $("#score").empty();

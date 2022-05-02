@@ -13,15 +13,15 @@
 
 <h1>Quiz</h1>
 <div id="quiz_progress">
-    Question {{question_id}}/6 <br>
+    Question: {{question_id}}/6 <br>
     Score: {{score}}
 </div>
 <div class="row">
     <div class="col-md-12">
-        <video width="640" height="480" autoplay loop>
+        <video width="320" height="240" autoplay loop>
             <source src={{question.video_1.video}} type="video/mp4">
-        </video>
-        <br>{{question.instructions}}
+        </video><br>
+        {{question.instructions}}<br>
     </div>
 </div>
 <form id="answer_conversation">
