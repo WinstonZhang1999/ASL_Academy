@@ -86,19 +86,23 @@ function quiz_feedback(result) {
         //If conversation question
         if (result["question_type"].localeCompare("conversation") == 0) {
             //Get correct multiple choice answer
+            let user_radio_input = question[result["user_answer"]]["text"];
+
             let correct_radio_input = "";
             if (result["true_answer"].localeCompare("video_2") == 0) {
-                correct_radio_input = "A";
+                correct_radio_input = "\"" + question["video_2"]["text"] + "\"";
             } else if (result["true_answer"].localeCompare("video_3") == 0) {
-                correct_radio_input = "B";
+                correct_radio_input = "\"" + question["video_3"]["text"] + "\"";
             } else {
-                correct_radio_input = "C";
+                correct_radio_input = "\"" + question["video_4"]["text"] + "\"";
             }
-            $('#feedback').text("Incorrect! The correct answer is " + correct_radio_input);
+            $('#feedback').text("Incorrect! The correct answer is " + correct_radio_input + ". You said \""
+            + user_radio_input + "\"");
 
         //If translation question
         } else {
-            $('#feedback').text("Incorrect! The correct answer is " + result["true_answer"]);
+            $('#feedback').text("Incorrect! The correct answer is \"" + result["true_answer"] + "\". You said \""
+            + result["user_answer"] + "\"");
         }
     }
     $("#score").empty();
