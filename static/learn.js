@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    pre_Title = "<div class = 'pre-Title'> Learn about " + lesson["title"] +"!</div>";
+    $("#section-title").append(pre_Title)
 
     let current = 1
     $("#last-video").hide();

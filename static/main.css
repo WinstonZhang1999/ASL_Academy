@@ -52,7 +52,14 @@
     color: navy;
 }
 #lesson-title{
-    color: rgb(67, 67, 169);
+    color: navy;
+}
+
+.pre-Title{
+    color: navy;
+    padding-top: 25px;
+    font-size: 36px;
+    padding-left: 80px;
 }
 
 .title{
