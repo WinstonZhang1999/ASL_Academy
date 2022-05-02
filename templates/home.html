@@ -4,12 +4,14 @@
 <script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
 
 
-<b>Hello!
-    This will be the home page for ASL Academy!
-</b>
+<div class = 'title'>American Sign Language Academy</div>
 <div class="row">
     <div class="col-md-6">
-        <button id = "learn" class = "button"> Start Learning!</button>
+        <div class = 'card stat'>
+            <img class="card-img-top" src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/American_Sign_Language_ASL.svg/1200px-American_Sign_Language_ASL.svg.png' alt='ASL logo'>
+            <div class="card-body" alt="LearningCard"></div>
+            <button id = "learn" class = " btn button learn"> Start Learning!</button>
+        </div>
     </div>
     <div class="col-md-6">
         <button id = "quiz" class = "button"> Test Yourself</button>

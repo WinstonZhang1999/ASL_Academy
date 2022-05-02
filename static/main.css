@@ -46,3 +46,32 @@
 #lesson-title{
     color: rgb(67, 67, 169);
 }
+
+.title{
+    font-size: 60px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 90px;
+    margin-left: 100px;
+}
+
+.learn{
+    background-color: rgb(67, 67, 169);
+}
+
+.card{
+    border-radius: 10%;
+    border-top: 10%;
+}
+
+.card-text{
+    color: rgb(90, 90, 90);
+}
+
+.card-title{
+    color: rgb(90, 90, 90);
+    text-align: center;
+}
+
+.stat{
+    position: static;
+}
