@@ -1,6 +1,11 @@
 .soft{
     background-color: aliceblue;
 }
+
+.instructions{
+    text-align: center;
+    padding-top: 5px;
+}
 #buttons {
     text-align: center;
 }
@@ -43,16 +48,38 @@
 
 .next_button{
     margin-top: 10px;
-    margin-right: 10px;
     background-color: navy;
     color: white;
-
+    float: left;
 }
+.ans_button{
+    margin-top: 10px;
+    background-color: navy;
+    color: white;
+}
+
+.last_button{
+    margin-top: 10px;
+    background-color: navy;
+    color: white;
+    float: right;
+}
+
 #navbar-title{
     color: navy;
 }
 #lesson-title{
     color: navy;
+    text-align: center;
+    padding-top: 0px;
+}
+
+#section-title{
+    color: navy;
+    font-size: 30px ;
+    text-align: center;
+    margin-top: 20px;
+
 }
 
 .title{

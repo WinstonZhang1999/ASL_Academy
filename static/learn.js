@@ -48,7 +48,7 @@ function renderVideo(videoNumber){
         }
     })
     $(newTitle).html('<h1> '+content);
-    let video = $("<video width='640' height='480' autoplay loop>");
+    let video = $("<video width=100% autoplay loop>");
     $(video).attr('src', source);
     $(newVid).append(video);
     $("#lesson-title").append(newTitle);

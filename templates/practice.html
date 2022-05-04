@@ -11,53 +11,53 @@
 </script>
 
 <div class="row">
-    <div class = 'col-md-3'></div>
-    <div class = 'col-md-6'>
+    <div class = 'col-md-2'></div>
+    <div class = 'col-md-8'>
         <h1 id="lesson-title">Practice for lesson {{lesson_id}}</h1>
     </div>
+    <div class = 'col-md-2'></div>
+</div>
+
+<div class="row">
+    <div class = 'col-md-2'></div>
+    <div id = "practice-video" class = 'col-md-8'></div>
     <div class = 'col-md-3'></div>
 </div>
 
 <div class="row">
-    <div class = 'col-md-3'></div>
-    <div id = "practice-video" class = 'col-md-6'></div>
-    <div class = 'col-md-3'></div>
-</div>
-
-<div class="row">
-    <div class = 'col-md-3'>
-        <button id = "back" class="next_button button btn">
+    <div class = 'col-md-2'>
+        <button id = "back" class="last_button button btn">
             Back to Lesson {{lesson_id}} 
         </button>
     </div>
-    <div class = 'col-md-6'>  
+    <div class = 'col-md-8'>  
+        <div id = "ans" class="instructions">
+            <div class = "instructions">
+                Please type your answer below:
+            </div>
+            <div>
+                <textarea id = "answer" ></textarea>
+            </div>
+            <div>
 
-        <div class="row">
-            Please type your answer below:
-        </div>
-        <div class="row">
-            <textarea id = "answer"></textarea>
-        </div>
-        <div class="row">
-
-                <button class = "next_button check btn">
-                    submit
-                </button>
-                
-
-                <button class="next_button again btn ">
-                    Practice More
-                </button>
-            <br>
-        </div>
-        <div class="row">
-            <div id = "feedback">
+                    <button class = "ans_button check btn">
+                        submit
+                    </button>
                     
+
+                    <button class="ans_button again btn ">
+                        Practice More
+                    </button>
+                <br>
+            </div>
+            <div>
+                <div id = "feedback">
+                        
+                </div>
             </div>
         </div>
-
-    </div>
-    <div class = 'col-md-3'>
+        </div>
+    <div class = 'col-md-2'>
         <button class="next_button next btn">
             Next
         </button>

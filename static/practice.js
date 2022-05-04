@@ -61,7 +61,7 @@ function renderVideo(videoNumber){
             source = video["video"];
         }
     })
-    let video = $("<video width='640' height='480' autoplay loop>");
+    let video = $("<video width=100% autoplay loop>");
     $(video).attr('src', source);
     $("#practice-video").append(video);
 }
