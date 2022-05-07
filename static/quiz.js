@@ -3,6 +3,27 @@ const LAST_QUESTION_ID = 12;
 
 $(document).ready(function(){
 
+    score = question_id.substring(0,question_id.length-1)
+    
+    if (score>= 50){
+        console.log("its, "+score)
+        
+        $("#insert_title").append("<h2> Great Job! <h2>");
+        let video = $("<video width=100% autoplay loop>");
+        $(video).attr('src'," https://www.signingsavvy.com/media/mp4-ld/22/22945.mp4");
+        $("#insert_vid").append(video);
+    }
+    else{
+        
+        console.log("its, "+score)
+        
+        $("#insert_title").append("<h2> Not Bad, Keep Practicing! <h2>");
+        let video = $("<video width=100% autoplay loop>");
+        $(video).attr('src'," https://www.signingsavvy.com/media/mp4-ld/32/32208.mp4");
+        $("#insert_vid").append(video);
+    }
+    
+
     //submit answer
     $("#submit").click(function(){
         let response = {
