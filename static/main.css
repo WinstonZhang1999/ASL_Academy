@@ -131,6 +131,21 @@
     text-align: center;
 }
 
+#col_a{
+    text-align: center;
+    display: inline-block;
+}
+
+#col_b {
+    text-align: center;
+    display: inline-block;
+}
+
+#col_c{
+    text-align: center;
+    display: inline-block;
+}
+
 .col-md-12 {
     text-align: center;
 }
